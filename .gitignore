@@ -1,4 +1,5 @@
-./image
-./runs
-./data
-./idea
+images/
+runs/
+data/
+.idea/
+.outf/
