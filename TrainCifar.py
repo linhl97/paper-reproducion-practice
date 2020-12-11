@@ -208,10 +208,10 @@ if __name__ == '__main__':
 
         if epoch % args.save_epoch == 0:
             torch.save(model.state_dict(), os.path.join(ckpt_path, '{model}-{epoch}-{type}.pth'.format(
-                model=args.model, epoch=epoch, type='regular')))
+                model=args.net, epoch=epoch, type='regular')))
             if acc > best_acc:
                 torch.save(model.state_dict(), os.path.join(ckpt_path, '{model}-{epoch}-{type}.pth'.format(
-                    model=args.model, epoch=epoch, type='best')))
+                    model=args.net, epoch=epoch, type='best')))
                 best_acc = acc
 
     writer.close()

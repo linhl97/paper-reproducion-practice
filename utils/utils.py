@@ -24,6 +24,10 @@ def get_network(args):
     elif args.net == 'vgg19':
         from models.vgg import vgg19_bn
         net = vgg19_bn()
+    elif args.net == 'googlenet':
+        from models.googLeNet import GoogLeNet
+        net = GoogLeNet()
+
     else:
         print('the network name you have entered is not supported yet')
         sys.exit()
