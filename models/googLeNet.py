@@ -45,7 +45,7 @@ class Inception(nn.Module):
             conv_block(n5x5_reduce, n5x5, kernel_size=5, padding=2)
         )
 
-        # pooling brance
+        # pooling branch
         self.branch4 = nn.Sequential(
             nn.MaxPool2d(kernel_size=3, stride=1, padding=1, ceil_mode=True),
             conv_block(in_channels, pool_proj, kernel_size=1)
@@ -122,8 +122,8 @@ class GoogLeNet(nn.Module):
         self.inception5b = Inception(832, 384, 192, 384, 48, 128, 128)
 
         if aux_logits:
-            self.aux1 = InceptionAux(512, 1000)
-            self.aux2 = InceptionAux(528, 1000)
+            self.aux1 = InceptionAux(512, num_class)
+            self.aux2 = InceptionAux(528, num_class)
         else:
             self.aux1 = None
             self.aux2 = None
