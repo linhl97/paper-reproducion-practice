@@ -11,6 +11,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class BasicConv2d(nn.Module):
+
     def __init__(self, in_channels, out_channels, **kwargs):
         super(BasicConv2d, self).__init__()
 
@@ -27,6 +28,7 @@ class BasicConv2d(nn.Module):
 
 # naive inception module
 class InceptionA(nn.Module):
+
     def __init__(self, in_channels, pool_features, conv_block=None):
         super(InceptionA, self).__init__()
         if conv_block is None:
@@ -67,6 +69,7 @@ class InceptionA(nn.Module):
 # downsample
 # Factorization into smaller convolutions
 class InceptionB(nn.Module):
+
     def __init__(self, in_channels, conv_block=None):
         super(InceptionB, self).__init__()
         if conv_block is None:
@@ -96,6 +99,7 @@ class InceptionB(nn.Module):
 
 # Factorizing Convolutions with Large Filter Size
 class InceptionC(nn.Module):
+
     def __init__(self, in_channels, channels_7x7, conv_block=None):
         super(InceptionC, self).__init__()
         if conv_block is None:
@@ -139,6 +143,7 @@ class InceptionC(nn.Module):
 
 # downsample
 class InceptionD(nn.Module):
+
     def __init__(self, in_channels, conv_block=None):
         super(InceptionD, self).__init__()
         if conv_block is None:
@@ -172,6 +177,7 @@ class InceptionD(nn.Module):
 
 # Expand filter bank
 class InceptionE(nn.Module):
+
     def __init__(self, in_channels, conv_block=None):
         super(InceptionE, self).__init__()
         if conv_block is None:
@@ -222,6 +228,7 @@ class InceptionE(nn.Module):
         return torch.cat(outputs, 1)
 
 class Inceptionv3(nn.Module):
+
     def __init__(self, num_classes=100, init_weights=True, aux_logits=False):
         super(Inceptionv3, self).__init__()
 
@@ -341,6 +348,7 @@ class Inceptionv3(nn.Module):
     https://github.com/pytorch/vision/blob/master/torchvision/models/inception.py
 """
 class InceptionAux(nn.Module):
+
     def __init__(self, in_channels, num_classes, conv_block=None):
         super(InceptionAux, self).__init__()
         if conv_block is None:
