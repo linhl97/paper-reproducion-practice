@@ -27,6 +27,9 @@ def get_network(args):
     elif args.net == 'googlenet':
         from models.googLeNet import GoogLeNet
         net = GoogLeNet()
+    elif args.net == 'inceptionv3':
+        from models.inceptionv3 import Inceptionv3
+        net = Inceptionv3()
 
     else:
         print('the network name you have entered is not supported yet')
