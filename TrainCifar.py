@@ -12,7 +12,6 @@ from torch.utils.tensorboard import SummaryWriter
 import logging
 from warnings import simplefilter
 
-simplefilter(action='ignore', category=FutureWarning)
 
 def train(epoch):
 
@@ -101,6 +100,8 @@ def eval(epoch, tb=True):
 
 if __name__ == '__main__':
 
+    simplefilter(action='ignore', category=FutureWarning)
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--net", type=str, required=True, help='model type')
     parser.add_argument('--gpu', action='store_true', default=False, help='use gpu or not')
@@ -133,7 +134,7 @@ if __name__ == '__main__':
     trainloader, testloader = cifar100_dataloader(
         CIFAR100_MEAN,
         CIFAR100_STD,
-        num_workers=8,
+        num_workers=0,
         batch_size=args.batch_size,
         shuffle=True
     )
@@ -187,8 +188,9 @@ if __name__ == '__main__':
     criterion = nn.CrossEntropyLoss()
 
     # optimizer
-    # optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4) for vgg, hard to converge
-    optimizer = optim.SGD(model.parameters(), lr=args.lr, momentum=0.9, weight_decay=5e-4)
+    # for vgg, hard to converge
+    optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4)
+    # optimizer = optim.SGD(model.parameters(), lr=args.lr, momentum=0.9, weight_decay=5e-4)
     train_scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[80, 130, 160, 190], gamma=0.2)
     iter_per_epoch = len(trainloader)
     warmup_scheduler = WarmUpLR(optimizer, iter_per_epoch * args.warm)
