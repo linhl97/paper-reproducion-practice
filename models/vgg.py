@@ -17,6 +17,7 @@ cfg = {
 
 }
 class VGG(nn.Module):
+
     def __init__(self, features, num_class=100, init_weights=True):
         super(VGG, self).__init__()
         self.features = features

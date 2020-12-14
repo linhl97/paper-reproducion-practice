@@ -10,6 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class BasicConv2d(nn.Module):
+
     def __init__(self, in_channels, out_channels, **kwargs):
         super(BasicConv2d, self).__init__()
 
@@ -25,6 +26,7 @@ class BasicConv2d(nn.Module):
         return x
 
 class Inception(nn.Module):
+
     def __init__(self, in_channels, n1x1, n3x3_reduce, n3x3, n5x5_reduce, n5x5, pool_proj, conv_block=None):
         super(Inception, self).__init__()
         if conv_block is None:
@@ -62,6 +64,7 @@ class Inception(nn.Module):
         return output
 
 class InceptionAux(nn.Module):
+
     def __init__(self, in_channels, num_class, conv_block):
         if conv_block is None:
             conv_block = BasicConv2d
@@ -88,6 +91,7 @@ class InceptionAux(nn.Module):
         return x
 
 class GoogLeNet(nn.Module):
+
     def __init__(self, num_class=100, init_weights=True, aux_logits=False):
         super(GoogLeNet, self).__init__()
 
