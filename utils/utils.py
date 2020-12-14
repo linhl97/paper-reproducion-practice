@@ -30,6 +30,21 @@ def get_network(args):
     elif args.net == 'inceptionv3':
         from models.inceptionv3 import Inceptionv3
         net = Inceptionv3()
+    elif args.net == 'resnet18':
+        from models.resnet import resnet18
+        net = resnet18()
+    elif args.net == 'resnet34':
+        from models.resnet import resnet34
+        net = resnet34()
+    elif args.net == 'resnet50':
+        from models.resnet import resnet50
+        net = resnet50()
+    elif args.net == 'resnet101':
+        from models.resnet import resnet101
+        net = resnet101()
+    elif args.net == 'resnet152':
+        from models.resnet import resnet152
+        net = resnet152()
 
     else:
         print('the network name you have entered is not supported yet')
