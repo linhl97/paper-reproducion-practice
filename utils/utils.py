@@ -45,6 +45,21 @@ def get_network(args):
     elif args.net == 'resnet152':
         from models.resnet import resnet152
         net = resnet152()
+    elif args.net == 'wrn':
+        from models.wideresnet import wideresnet
+        net = wideresnet()
+    elif args.net == 'densenet121':
+        from models.densenet import densenet121
+        net = densenet121()
+    elif args.net == 'densenet161':
+        from models.densenet import densenet161
+        net = densenet161()
+    elif args.net == 'densenet169':
+        from models.densenet import densenet169
+        net = densenet169()
+    elif args.net == 'densenet201':
+        from models.densenet import densenet201
+        net = densenet201()
 
     else:
         print('the network name you have entered is not supported yet')
